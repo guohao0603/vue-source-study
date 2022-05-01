@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./mustache.js"></script>
+</head>
+<body>
+    <script>
+        var template = `
+            <ul>
+                {{#arr}}
+                    <li>
+                        <p>姓名:{{name}}</p>
+                        <p>年龄:{{age}}</p>
+                        <p>性别:{{sex}}</p>
+                    </li>
+                {{/arr}}
+            </ul>
+            `
+            // Mustache.render(template, {})
+              var template3 = `
+                <ul>
+                    {{#arr}}
+                        <li>姓名:{{name}}</li>
+                        <li>年龄:{{age}}</li>
+                        <ol>
+                            {{#hobbies}}
+                                <li>爱好:{{.}}</li>
+                            {{/hobbies}}
+                        </ol>
+                    {{/arr}}
+                </ul>
+            `
+            Mustache.render(template3, {})
+    </script>
+</body>
+</html>

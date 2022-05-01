@@ -1,0 +1,23 @@
+mvvm
+model===view-model===view
+
+数据响应式原理研究的是 为什么数据变了，视图就会更新
+对比===>原生的html，一般我们需要通过js改变dom的innerText ,需要手动操作dom才能更新视图
+
+Vue数据变化
+this.a++  ==>非侵入式===>
+基于Object.defineProperty(数据劫持/数据代理)
+利用Javascript引擎赋予的功能，检测对象属性变化
+
+Rect数据变化===侵入式
+this.setState({
+    a: this.state.a + 1
+})
+
+
+小程序数据变化===侵入式
+this.setDate({
+    a: this.data.a + 1
+})
+侵入式
+

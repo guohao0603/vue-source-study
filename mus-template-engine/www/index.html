@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="/xuni/bundle.js"></script>
+    <script>
+        var templateStr = '我买了一个{{thing}},好{{mood}}啊';
+        var template3 = `
+            <ul>
+                {{#arr}}
+                    <li>姓名:{{name}}</li>
+                    <li>年龄:{{age}}</li>
+                    <ol>
+                        {{#hobbies}}
+                            <li>爱好:{{.}}</li>
+                        {{/hobbies}}
+                    </ol>
+                {{/arr}}
+            </ul>
+        `
+        var data = {
+            thing: '',
+            mood: ''
+        }
+        MUS_TemplateEngine.render(template3, data)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mustache</title>
+    <script src="./mustache.js"></script>
+</head>
+<body>
+    <!-- 用来存储模板 不会被执行 -->
+    <script type="text/template" id='template3'> 
+        <ul>
+            {{#arr}}
+                <li>姓名:{{name}}</li>
+                <li>年龄:{{age}}</li>
+                <ol>
+                    {{#hobbies}}
+                        <li>爱好:{{.}}</li>
+                    {{/hobbies}}
+                </ol>
+            {{/arr}}
+        </ul>
+    </script>
+    
+    <div class="container"></div>
+    <script>
+        let data = {
+            arr:[{name:'张三',age:21,sex:'man'},{name:'张三',age:21,sex:'man'},{name:'张三',age:21,sex:'man'}]
+        }
+        var template = `
+        <ul>
+            {{#arr}}
+            <li>
+                <p>姓名:{{name}}</p>
+                <p>年龄:{{age}}</p>
+                <p>性别:{{sex}}</p>
+            </li>
+            {{/arr}}
+        </ul>
+        `
+        let domStr = Mustache.render(template, data)
+        let domContent = document.querySelector('.container')
+        domContent.innerHTML = domStr
+        console.log(domStr);
+
+        //**********************
+        var template2 = `姓名:{{name}},年龄:{{age}}`
+        let data2 = {name:'jack',age:23}
+        let dom2Str = Mustache.render(template2, data2)
+        domContent.innerHTML = dom2Str
+        //**********************
+        let data3 = {arr: [
+            {name: 'jack',age:24,hobbies:['code','song']},
+            {name: 'lily',age:28,hobbies:['打羽毛球','爬山']},
+            {name: 'Tom',age:21,hobbies:['code','看书']}
+        ]}
+        // var template3 = `
+        //     <ul>
+        //         {{#arr}}
+        //             <li>姓名:{{name}}</li>
+        //             <li>年龄:{{age}}</li>
+        //             <ol>
+        //                 {{#hobbies}}
+        //                     <li>爱好:{{.}}</li>
+        //                 {{/hobbies}}
+        //             </ol>
+        //         {{/arr}}
+        //     </ul>
+        // `
+        let tem = document.getElementById('template3').innerHTML
+        let dom3Str = Mustache.render(tem, data3)
+        domContent.innerHTML = dom3Str
+        //*****************
+        // var template4 = `
+        //     {{#status}}
+        //     <div>hello world</div>
+        //     {{/status}}
+        // `
+        // let data4 = {status: true}
+        // let dom4Str = Mustache.render(template4, data4)
+        // domContent.innerHTML = dom4Str
+    </script>
+</body>
+</html>
